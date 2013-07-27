@@ -21,7 +21,11 @@ class ToDoItemsController < ApplicationController
     redirect_to @to_do_item.to_do_list
   end
 
-
+  def update_position
+    @to_do_item = ToDoItem.find(params[:item_id])
+    @to_do_item.insert_at(params[:position])
+    redirect_to @to_do_item.to_do_list
+  end
 
 
 
