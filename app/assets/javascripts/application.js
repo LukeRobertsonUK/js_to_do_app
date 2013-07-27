@@ -22,8 +22,7 @@ $(function() {
         $(ui.item).effect("highlight");
         var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
         var position = ui.item.prevAll().length;
-        $.post('/to_do_items/update_position', {
-          'item_id': item_id,
+        $.post('/to_do_items/' + item_id + '/update_position', {
           'position': position
          });
          $(ui.item).effect("highlight");
