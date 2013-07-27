@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @to_do_item.name %>
+</p>
+
+<p>
+  <b>To do list:</b>
+  <%= @to_do_item.to_do_list %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @to_do_item.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_to_do_item_path(@to_do_item) %> |
+<%= link_to 'Back', to_do_items_path %>
