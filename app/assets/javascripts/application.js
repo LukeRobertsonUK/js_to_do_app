@@ -28,4 +28,26 @@ $(function() {
          $(ui.item).effect("highlight");
       }
     });
+
+    $( ".connectedSortable" ).sortable({
+      connectWith: ".connectedSortable",
+        stop: function(event, ui) {
+          $(ui.item).effect("highlight");
+          var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
+          var position = ui.item.prevAll().length;
+          var new_list = $(ui.item).parent().attr('id').replace(/[^\d]+/g, '');
+          $.post('/to_do_items/' + item_id + '/update_list_and_position', {
+          'position': position,
+          'new_list': new_list
+         });
+         $(ui.item).effect("highlight");
+        }
+
+    }).disableSelection();
+
+
+
+
+
+
   })
