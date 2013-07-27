@@ -2,14 +2,11 @@
 
 <h1><%= @to_do_list.name %></h1>
 <h2>Items</h2>
-<ul>
+<ul class="sortable">
   <%@to_do_list.to_do_items.each do |item| %>
-    <li>
-      <%= item.name %> | position:
-      <%= item.position %> |
-      <%= link_to 'up', move_in_list_to_do_item_path(item, direction: 'up'), {method: :put} %> |
-      <%= link_to 'down', move_in_list_to_do_item_path(item, direction: 'down'), {method: :put} %>
-    </li>
+
+    <li id='item_<%=item.id%>', class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+      <%= item.name %>
   <%end%>
 </ul>
 

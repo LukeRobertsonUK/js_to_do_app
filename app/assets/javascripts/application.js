@@ -12,5 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.sortable
+//= require jquery.ui.all
+
 //= require_tree .
+
+
+$(function() {
+    $('.sortable').sortable({
+      stop: function(event, ui) {
+        $(ui.item).effect("highlight");
+        var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
+        var position = ui.item.prevAll().length;
+        $.post('/to_do_items/' + item_id + '/update_position', {
+          'position': position
+         });
+         $(ui.item).effect("highlight");
+      }
+    });
+  })
