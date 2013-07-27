@@ -1,23 +1,19 @@
 <h1>Listing to_do_lists</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @to_do_lists.each do |to_do_list| %>
-  <tr>
-    <td><%= to_do_list.name %></td>
-    <td><%= link_to 'Show', to_do_list %></td>
-    <td><%= link_to 'Edit', edit_to_do_list_path(to_do_list) %></td>
-    <td><%= link_to 'Destroy', to_do_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
+    <h2><%= to_do_list.name %></h2>
+    <%= link_to 'Show', to_do_list %>
+    <%= link_to 'Edit', edit_to_do_list_path(to_do_list) %>
+    <%= link_to 'Destroy', to_do_list, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <ul id="list_<%=to_do_list.id%>", class="connectedSortable">
+      <%  to_do_list.to_do_items.each do |item| %>
+        <li id='item_<%=item.id%>', class="ui-state-default <%=item.to_do_list_id%>"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+          <%= item.name %>
+        </li>
+    <%end%>
+    </ul>
+  <% end %>
 <br />
 
 <%= link_to 'New To do list', new_to_do_list_path %>

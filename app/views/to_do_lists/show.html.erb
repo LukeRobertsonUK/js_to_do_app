@@ -4,12 +4,14 @@
 <h2>Items</h2>
 <ul class="sortable">
   <%@to_do_list.to_do_items.each do |item| %>
-
     <li id='item_<%=item.id%>', class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
       <%= item.name %>
+    </li>
   <%end%>
 </ul>
 
 
 <%= link_to 'Edit', edit_to_do_list_path(@to_do_list) %> |
 <%= link_to 'Back', to_do_lists_path %>
+
+
