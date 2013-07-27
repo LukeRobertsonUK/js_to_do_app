@@ -2,7 +2,7 @@
 
 <h1><%= @to_do_list.name %></h1>
 <h2>Items</h2>
-<ul>
+<ul id="sortable">
   <%@to_do_list.to_do_items.each do |item| %>
     <li>
       <%= item.name %> | position:
