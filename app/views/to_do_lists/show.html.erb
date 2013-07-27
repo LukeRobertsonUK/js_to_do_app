@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @to_do_list.name %>
-</p>
+<h1><%= @to_do_list.name %></h1>
+<h2>Items</h2>
+<ul>
+  <%@to_do_list.to_do_items.each do |item| %>
+    <li>
+      <%= item.name %> | position:
+      <%= item.position %> |
+      <%= link_to 'up', move_in_list_to_do_item_path(item, direction: 'up'), {method: :put} %> |
+      <%= link_to 'down', move_in_list_to_do_item_path(item, direction: 'down'), {method: :put} %>
+    </li>
+  <%end%>
+</ul>
 
 
 <%= link_to 'Edit', edit_to_do_list_path(@to_do_list) %> |

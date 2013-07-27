@@ -7,8 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+   <div class = "nav">
+     <ul>
+      <li><%= link_to("Lists", to_do_lists_path) %></li>
+      <li><%= link_to("Items", to_do_items_path) %></li>
+     </ul>
+   </diu>
 
-<%= yield %>
 
+  <%= yield %>
+
+
+  </div>
 </body>
 </html>
