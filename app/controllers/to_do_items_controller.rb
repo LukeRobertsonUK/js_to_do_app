@@ -95,16 +95,18 @@ class ToDoItemsController < ApplicationController
   # PUT /to_do_items/1.json
   def update
     @to_do_item = ToDoItem.find(params[:id])
-
-    respond_to do |format|
-      if @to_do_item.update_attributes(params[:to_do_item])
-        format.html { redirect_to @to_do_item, notice: 'To do item was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @to_do_item.errors, status: :unprocessable_entity }
-      end
+    unless params[:to_do_item]["to_do_list_id"].to_i == @to_do_item.to_do_list_id
+      @to_do_item.remove_from_list
     end
+    respond_to do |format|
+        if @to_do_item.update_attributes(params[:to_do_item])
+          format.html { redirect_to @to_do_item, notice: 'To do item was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @to_do_item.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
   # DELETE /to_do_items/1
