@@ -60,8 +60,8 @@ $(function() {
 
     });
       $('.search_bar_entry_field').on('keyup', function(){
-        console.log('hello');
-        $('#search_form_for').submit();
+       console.log('hello');
+       $('#search_form_for').submit();
       })
 
   });
