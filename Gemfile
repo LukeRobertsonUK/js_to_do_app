@@ -16,6 +16,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'acts_as_list'
 gem 'jquery-ui-rails'
+gem 'masonry-rails'
 
 group :development do
   gem 'pry-rails'

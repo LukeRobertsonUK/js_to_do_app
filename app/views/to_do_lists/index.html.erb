@@ -1,12 +1,11 @@
 <h1>Lists</h1>
 <%= link_to 'New To do list', new_to_do_list_path %>
 
-<% @to_do_lists.each_slice(3) do |batch|%>
-<div class="row">
 
-<% batch.each do |to_do_list| %>
 
-  <div class="span4">
+<% @to_do_lists.each do |to_do_list| %>
+
+<div id="masonry_container">
   <div class="list_box">
     <h2><%= to_do_list.name %></h2>
     <%= link_to 'Show', to_do_list %>
@@ -33,5 +32,3 @@
   </div>
 </div>
   <% end %>
-</div>
-<%end%>

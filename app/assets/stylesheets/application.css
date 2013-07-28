@@ -9,7 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require_tree
+ *= require 'masonry/basic'
+*= require 'masonry/centered'
+*= require 'masonry/fluid'
+*= require 'masonry/gutters'
+*= require 'masonry/infinitescroll'
+*= require 'masonry/right-to-left'
+*= require 'masonry/transitions'
  */
   #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
   #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
@@ -36,6 +43,7 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
+  width: 25%;
 
 }
 
