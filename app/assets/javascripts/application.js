@@ -23,47 +23,62 @@
 //= require masonry/jquery.loremimages.min
 
 
-$(function() {
-    $('.sortable').sortable({
-      stop: function(event, ui) {
-        $(ui.item).effect("highlight");
-        var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
-        var position = ui.item.prevAll().length;
-        $.post('/to_do_items/' + item_id + '/update_position', {
-          'position': position
-         });
-         $(ui.item).effect("highlight");
+
+
+function runAccordion(){
+  $( ".accordion" ).accordion({
+    active: false,
+    navigation: false,
+    collapsible: true,
+    create: function(event, ui) { $("#accordion").show(); }
+    });
+}
+
+function runSortable(){
+   $('.sortable').sortable({
+    stop: function(event, ui) {
+      $(ui.item).effect("highlight");
+      var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
+      var position = ui.item.prevAll().length;
+      $.post('/to_do_items/' + item_id + '/update_position', {
+        'position': position
+       });
+      $(ui.item).effect("highlight");
+     }
+  });
+}
+
+function runConnectedSortable(){
+  $( ".connectedSortable" ).sortable({
+  connectWith: ".connectedSortable",
+   stop: function(event, ui) {
+    $(ui.item).effect("highlight");
+    var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
+    var position = ui.item.prevAll().length;
+    var new_list = $(ui.item).parent().attr('id').replace(/[^\d]+/g, '');
+    $.post('/to_do_items/' + item_id + '/update_list_and_position', {
+      'position': position,
+      'new_list': new_list
+      });
+      $(ui.item).effect("highlight");
       }
-    });
+  }).disableSelection();
+};
 
-    $( ".connectedSortable" ).sortable({
-      connectWith: ".connectedSortable",
-        stop: function(event, ui) {
-          $(ui.item).effect("highlight");
-          var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
-          var position = ui.item.prevAll().length;
-          var new_list = $(ui.item).parent().attr('id').replace(/[^\d]+/g, '');
-          $.post('/to_do_items/' + item_id + '/update_list_and_position', {
-          'position': position,
-          'new_list': new_list
-         });
-         $(ui.item).effect("highlight");
-        }
+function searchBar(){
+    $('.search_bar_entry_field').on('keyup', function(){
+     $('#search_form_for').submit();
+     });
+}
 
-    }).disableSelection();
 
-      $( ".accordion" ).accordion({
-       active: false,
-       navigation: false,
-       collapsible: true,
-       create: function(event, ui) { $("#accordion").show(); }
+//document is ready
+$(function() {
 
-    });
-      $('.search_bar_entry_field').on('keyup', function(){
-       console.log('hello');
-       $('#search_form_for').submit();
-      })
-
+    runAccordion();
+    runSortable();
+    runConnectedSortable();
+    searchBar();
   });
 
 
