@@ -1,34 +1,15 @@
-<h1>Lists</h1>
-<%= link_to 'New To do list', new_to_do_list_path %>
+<h1>Stuff you need to do...</h1>
 
 
-
-<% @to_do_lists.each do |to_do_list| %>
-
-<div id="masonry_container">
-  <div class="list_box">
-    <h2><%= to_do_list.name %></h2>
-    <%= link_to 'Show', to_do_list %>
-    <%= link_to 'Edit', edit_to_do_list_path(to_do_list) %>
-    <%= link_to 'Destroy', to_do_list, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <ul id="list_<%=to_do_list.id%>", class="connectedSortable droptrue">
-           <%  to_do_list.to_do_items.each do |item| %>
-            <li id='item_<%=item.id%>', class="ui-state-default <%=item.to_do_list_id%>">
-              <h3><%= item.name %></h3>
-              <div class="accordion">
-                <h4>Options:</h4>
-                <p>
-                  <%= link_to 'Show', item %> |
-                  <%= link_to 'Edit', edit_to_do_item_path(item) %> |
-                  <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </p>
-                <h4>Preview:</h4>
-                <p><%=item.details %></p>
-              </div>
-
-            </li>
-        <%end%>
-    </ul>
-  </div>
+<div class="searchbar">
+  <%=search_form_for @q, remote: true, id:"search_form_for", :url=>  url_for(:to_do_lists_controller => "q", :action => "index") do |f| %>
+  <%= f.text_field :name_or_to_do_items_name_or_to_do_items_details_cont, class:"search_bar_entry_field"  %>
+  <%= f.submit "Search" %>
+  <%end%>
 </div>
-  <% end %>
+
+
+
+<div id="lists">
+  <%=render @to_do_lists %>
+</div>

@@ -8,15 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree
- *= require 'masonry/basic'
-*= require 'masonry/centered'
-*= require 'masonry/fluid'
-*= require 'masonry/gutters'
-*= require 'masonry/infinitescroll'
-*= require 'masonry/right-to-left'
-*= require 'masonry/transitions'
+ *= require_tree .
+  *= require_self
  */
   #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
   #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
@@ -26,7 +19,7 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background: #eee;
+ background: #F9FFF2;
   padding: 5px;
   min-height: 20px;
   border-radius: 5px;
@@ -36,15 +29,90 @@
   margin: 5px;
   padding: 5px;
   font-size: 1em;
+  background: white;
+  border: 2px solid #96CA2D;
 }
 
 .list_box {
-  border: 1px solid black;
+  border: 3px solid #96CA2D;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
-  width: 25%;
+  width: 40%;
+  display: inline-block;
+  background: #B5E655;
+}
+
+.preview_content {
+  font-size: 80%;
+  padding: 0;
+}
+
+.ui_accordion {
+  padding: 0px;
+}
+
+.container {
+  background: #F9FFF2
+}
+
+h1 {
+  font-family: 'Finger Paint', cursive;
+  font-size: 50px;
+  color: #96CA2D;
+margin-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  color: white;
+  font-size: 40px;
+  margin: 0px;
 
 }
 
+h3 {
+  font-family: 'Pathway Gothic One', sans-serif;
+    color: #4BB5C1;
 
+}
+
+a.button {
+  color: $ga_red;
+  font-size: 80%;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid $ga_red;
+  border-radius: 5px;
+  padding: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+a.button:hover {
+   background: $ga_red;
+  color: white;
+  border: 1px solid $ga_red;
+}
+
+a.edit_delete {
+
+  color: #96CA2D;
+  font-size: 80%;
+  background-color: white;
+  border: 1px solid #96CA2D;
+  border-radius: 5px;
+  padding: 1px;
+  padding-left: 3px;
+  padding-right: 3px;
+  text-decoration: none;
+
+}
+
+a.edit_delete:hover {
+   background: #96CA2D;
+  color: white;
+  border: 1px solid #96CA2D;
+}

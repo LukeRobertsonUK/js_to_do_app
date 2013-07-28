@@ -2,10 +2,12 @@ class ToDoListsController < ApplicationController
   # GET /to_do_lists
   # GET /to_do_lists.json
   def index
-    @to_do_lists = ToDoList.all
+    @q = ToDoList.search(params[:q])
+    @to_do_lists = @q.result(distinct: true)
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @to_do_lists }
     end
   end
@@ -44,7 +46,7 @@ class ToDoListsController < ApplicationController
 
     respond_to do |format|
       if @to_do_list.save
-        format.html { redirect_to @to_do_list, notice: 'To do list was successfully created.' }
+        format.html { redirect_to to_do_lists_path, notice: 'To do list was successfully created.' }
         format.json { render json: @to_do_list, status: :created, location: @to_do_list }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class ToDoListsController < ApplicationController
 
     respond_to do |format|
       if @to_do_list.update_attributes(params[:to_do_list])
-        format.html { redirect_to @to_do_list, notice: 'To do list was successfully updated.' }
+        format.html { redirect_to to_do_lists_path, notice: 'To do list was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

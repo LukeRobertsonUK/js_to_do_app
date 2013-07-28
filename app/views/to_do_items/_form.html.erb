@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :to_do_list_id, "List" %><br />
+    <%= f.label :to_do_list_id, "List" %>
     <%= f.select(:to_do_list_id, ToDoList.all.map{|l| [l.name, l.id]}) %>
   </div>
     <div class="field">
-    <%= f.label :details %><br />
+    <%= f.label :details %>
     <%= f.text_area :details %>
   </div>
   <div class="actions">
