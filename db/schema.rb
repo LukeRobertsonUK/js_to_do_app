@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727114248) do
+ActiveRecord::Schema.define(:version => 20130728090730) do
 
   create_table "to_do_items", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130727114248) do
     t.integer  "position"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.text     "details"
   end
 
   add_index "to_do_items", ["to_do_list_id"], :name => "index_to_do_items_on_to_do_list_id"

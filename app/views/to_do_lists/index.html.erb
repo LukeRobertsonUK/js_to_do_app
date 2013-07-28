@@ -1,21 +1,37 @@
-<h1>Listing to_do_lists</h1>
+<h1>Lists</h1>
+<%= link_to 'New To do list', new_to_do_list_path %>
 
+<% @to_do_lists.each_slice(3) do |batch|%>
+<div class="row">
 
-<% @to_do_lists.each do |to_do_list| %>
+<% batch.each do |to_do_list| %>
+
+  <div class="span4">
+  <div class="list_box">
     <h2><%= to_do_list.name %></h2>
     <%= link_to 'Show', to_do_list %>
     <%= link_to 'Edit', edit_to_do_list_path(to_do_list) %>
     <%= link_to 'Destroy', to_do_list, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <ul id="list_<%=to_do_list.id%>", class="connectedSortable">
+    <ul id="list_<%=to_do_list.id%>", class="connectedSortable droptrue">
            <%  to_do_list.to_do_items.each do |item| %>
-            <li id='item_<%=item.id%>', class="ui-state-default <%=item.to_do_list_id%>"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-            <%= item.name %>
+            <li id='item_<%=item.id%>', class="ui-state-default <%=item.to_do_list_id%>">
+              <h3><%= item.name %></h3>
+              <div class="accordion">
+                <h4>Options:</h4>
+                <p>
+                  <%= link_to 'Show', item %> |
+                  <%= link_to 'Edit', edit_to_do_item_path(item) %> |
+                  <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+                <h4>Preview:</h4>
+                <p><%=item.details %></p>
+              </div>
+
             </li>
         <%end%>
-
-
     </ul>
+  </div>
+</div>
   <% end %>
-<br />
-
-<%= link_to 'New To do list', new_to_do_list_path %>
+</div>
+<%end%>

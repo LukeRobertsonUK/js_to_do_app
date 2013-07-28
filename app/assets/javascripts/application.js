@@ -13,8 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-
-//= require_tree .
+//= require_tree
 
 
 $(function() {
@@ -46,7 +45,15 @@ $(function() {
 
     }).disableSelection();
 
+      $( ".accordion" ).accordion({
+       active: false,
 
+
+       navigation: false,
+       collapsible: true,
+       create: function(event, ui) { $("#accordion").show(); }
+
+    });
 
 
 

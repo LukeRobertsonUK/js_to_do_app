@@ -4,7 +4,7 @@
 <h2>Items</h2>
 <ul class="sortable">
   <%@to_do_list.to_do_items.each do |item| %>
-    <li id='item_<%=item.id%>', class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+    <li id='item_<%=item.id%>', class="ui-state-default">
       <%= item.name %>
     </li>
   <%end%>

@@ -14,3 +14,29 @@
   #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
   #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
   #sortable li span { position: absolute; margin-left: -1.3em; }
+
+.connectedSortable {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: #eee;
+  padding: 5px;
+  min-height: 20px;
+  border-radius: 5px;
+  }
+
+.connectedSortable li {
+  margin: 5px;
+  padding: 5px;
+  font-size: 1em;
+}
+
+.list_box {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+
+}
+
+
