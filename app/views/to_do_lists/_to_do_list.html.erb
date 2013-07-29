@@ -3,9 +3,9 @@
   <h2><%= to_do_list.name %></h2>
   <%= link_to 'Edit', edit_to_do_list_path(to_do_list), class:"edit_delete" %>
   <%= link_to 'Delete', to_do_list, method: :delete, data: { confirm: 'Are you sure?' }, class:"edit_delete" %>
-  <ul id="list_<%=to_do_list.id%>", class="connectedSortable droptrue">
+  <ul id="list_<%=to_do_list.id%>", data-list_id='<%=to_do_list.id%>', class="connectedSortable droptrue">
    <%  to_do_list.to_do_items.each do |item| %>
-    <li id='item_<%=item.id%>', class="ui-state-default <%=item.to_do_list_id%>">
+    <li id='item_<%=item.id%>', data-item_id='<%=item.id%>', class="ui-state-default <%=item.to_do_list_id%>">
     <h3><%= item.name %></h3>
     <div class="accordion">
       <h4>Options:</h4>

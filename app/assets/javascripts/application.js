@@ -14,13 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require_tree
-//= require masonry/jquery.masonry
-//= require masonry/jquery.event-drag
-//= require masonry/jquery.imagesloaded.min
-//= require masonry/jquery.infinitescroll.min
-//= require masonry/modernizr-transitions
-//= require masonry/box-maker
-//= require masonry/jquery.loremimages.min
+
 
 
 
@@ -53,9 +47,9 @@ function runConnectedSortable(){
   connectWith: ".connectedSortable",
    stop: function(event, ui) {
     $(ui.item).effect("highlight");
-    var item_id = $(ui.item).attr('id').replace(/[^\d]+/g, '');
-    var position = ui.item.prevAll().length;
-    var new_list = $(ui.item).parent().attr('id').replace(/[^\d]+/g, '');
+    var item_id = ui.item.data("item_id");
+    var position = ui.item.index();
+    var new_list = ui.item.parent().data("list_id");
     $.post('/to_do_items/' + item_id + '/update_list_and_position', {
       'position': position,
       'new_list': new_list
@@ -74,9 +68,7 @@ function searchBar(){
 
 //document is ready
 $(function() {
-
     runAccordion();
-    runSortable();
     runConnectedSortable();
     searchBar();
   });

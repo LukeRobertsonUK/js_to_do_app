@@ -38,14 +38,11 @@ class ToDoItemsController < ApplicationController
     @new_list_id = params[:new_list].to_i
     @position = params[:position].to_i + 1
     @to_do_item.update_attributes(to_do_list_id: @new_list_id)
-    @to_do_item.insert_at((params[:position]).to_i + 1 )
-
+    @to_do_item.insert_at(@position)
      respond_to do |format|
       format.js { render nothing: true }
     end
   end
-
-
 
 
   # GET /to_do_items/1
