@@ -1,3 +1,5 @@
+
+
 $('#lists').html("<%= escape_javascript(render @to_do_lists) %>")
 
 
@@ -5,8 +7,8 @@ $('#lists').html("<%= escape_javascript(render @to_do_lists) %>")
    $(function(){
     runAccordion();
     runConnectedSortable();
-
-
+    $('#lists').masonry('reloadItems');
+    runMasonry();
 
      });
 

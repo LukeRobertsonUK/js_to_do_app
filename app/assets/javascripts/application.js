@@ -17,6 +17,7 @@
 
 
 function runMasonry(){
+    console.log("hello");
     $('#lists').masonry({
      itemSelector: '.list_box',
      gutter: 20
@@ -31,6 +32,7 @@ function runAccordion(){
     collapsible: true,
     create: function(event, ui) { $("#accordion").show(); }
     });
+
 }
 
 function runSortable(){
@@ -52,7 +54,7 @@ function runConnectedSortable(){
   connectWith: ".connectedSortable",
    stop: function(event, ui) {
     $(ui.item).effect("highlight");
-     runMasonry();
+    runMasonry();
     var item_id = ui.item.data("item_id");
     var position = ui.item.index();
     var new_list = ui.item.parent().data("list_id");
@@ -68,6 +70,7 @@ function runConnectedSortable(){
 
 function searchBar(){
     $('.search_bar_entry_field').on('keyup', function(){
+
      $('#search_form_for').submit();
      });
 
@@ -80,20 +83,10 @@ function searchBar(){
 //document is ready
 $(function() {
 
-
-
-
     runAccordion();
-    runMasonry();
     runConnectedSortable();
     searchBar();
-
-
-
-
-
-
-
+    runMasonry();
 
 
   });
