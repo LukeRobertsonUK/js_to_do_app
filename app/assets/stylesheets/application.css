@@ -115,3 +115,10 @@ a.edit_delete:hover {
   color: white;
   border: 1px solid #96CA2D;
 }
+
+.myClass {
+  transform: rotate(15deg);
+-ms-transform: rotate(15deg);
+-webkit-transform: rotate(15deg);
+
+}

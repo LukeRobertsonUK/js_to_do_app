@@ -52,7 +52,16 @@ function runSortable(){
 function runConnectedSortable(){
   $( ".connectedSortable" ).sortable({
   connectWith: ".connectedSortable",
+
+  start: function(event, ui) {
+    console.log("start");
+    $(ui.item).addClass("myClass");
+
+
+  },
+
    stop: function(event, ui) {
+    $(ui.item).removeClass("myClass");
     $(ui.item).effect("highlight");
     runMasonry();
     var item_id = ui.item.data("item_id");
